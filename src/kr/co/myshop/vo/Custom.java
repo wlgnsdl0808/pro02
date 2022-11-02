@@ -1,5 +1,5 @@
 package kr.co.myshop.vo;
-
+//고객 클래스
 public class Custom {
 	private String cusId;	//고객아이디
 	private String cusPw;	//고객비밀번호
@@ -10,7 +10,6 @@ public class Custom {
 	private int point;		//구매포인트
 	private int level;		//고객등급
 	private int visited;	//방문횟수
-	
 	public String getCusId() {
 		return cusId;
 	}
@@ -65,6 +64,4 @@ public class Custom {
 	public void setVisited(int visited) {
 		this.visited = visited;
 	}
-
-	
 }

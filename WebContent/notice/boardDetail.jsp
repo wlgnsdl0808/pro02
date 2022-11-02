@@ -11,6 +11,7 @@
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="common.css">
+
 <style>
 .title { padding-top:36px; padding-bottom:20px; }
 </style>
@@ -18,32 +19,39 @@
 <body>
 <%@ include file="../header.jsp" %>
 <%
-	List<Notice> notiList = (ArrayList<Notice>) request.getAttribute("notiList");
+	Notice vo = (Notice) request.getAttribute("notice");
 %>
 <div class="content container" id="content">
 	<h2 class="title">공지사항 목록</h2>
 	<table class="table">
-		<thead>
-			<tr>
-				<th>연번</th><th>제목</th><th>작성일</th>
-			</tr>
-		</thead>
 		<tbody>
-		<% for(int i=0;i<notiList.size();i++){
-			Notice vo = notiList.get(i);
-		%>
-		<tr>
-			<td><%=notiList.size()-i %></td>
-			<td><a href="GetBoardDetailCtrl?notiNo=<%=vo.getNotiNo() %>"><%=vo.getTitle() %></a></td>
-			<td><%=vo.getResDate() %></td>
-		</tr>
-		<% } %>	
+			<tr>
+				<th>번호</th>
+				<td><%=vo.getNotiNo() %></td>
+			</tr>
+			<tr>
+				<th>제목</th>
+				<td><%=vo.getTitle() %></td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td><%=vo.getContent() %></td>
+			</tr>
+			<tr>
+				<th>작성자</th>
+				<td><%=vo.getAuthor() %></td>
+			</tr>
+			<tr>
+				<th>작성일시</th>
+				<td><%=vo.getResDate() %></td>
+			</tr>
 		</tbody>
 	</table>
 	<div class="btn-group">
-		<a href="./notice/insertBoard.jsp" class="btn btn-info">글 쓰기</a>
+		<a href="UpdateBoardCtrl?notiNo=<%=vo.getNotiNo() %>" class="btn btn-info">글 수정</a>
+		<a href="DeleteBoardCtrl?notiNo=<%=vo.getNotiNo() %>" class="btn btn-info">글 삭제</a>
+		<a href="GetBoardListCtrl" class="btn btn-info">목록으로</a>
 	</div>
 </div>
-
 </body>
 </html>

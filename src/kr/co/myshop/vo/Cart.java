@@ -1,11 +1,10 @@
 package kr.co.myshop.vo;
-//장바구니
+//장바구니 클래스
 public class Cart {
 	private int cartNo;
 	private String cusId;
 	private int proNo;
 	private int amount;
-	
 	public int getCartNo() {
 		return cartNo;
 	}
@@ -30,6 +29,4 @@ public class Cart {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
-	
-	
 }
