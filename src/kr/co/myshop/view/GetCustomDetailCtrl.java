@@ -12,13 +12,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import sun.rmi.server.Dispatcher;
 import kr.co.myshop.vo.Custom;
 
-@WebServlet("/GetCustomInfoCtrl")
-public class GetCustomInfoCtrl extends HttpServlet {
+@WebServlet("/GetCustomDetailCtrl")
+public class GetCustomDetailCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private final static String DRIVER = "com.mysql.cj.jdbc.Driver";
 	private final static String URL = "jdbc:mysql://localhost:3306/myshop?serverTimezone=Asia/Seoul";
@@ -29,8 +26,7 @@ public class GetCustomInfoCtrl extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		HttpSession session = request.getSession();
-		String cusId = (String) session.getAttribute("sid");
+		String cusId = request.getParameter("cusId");
 		String sql = "";
 		try {
 			//데이터베이스 연결
@@ -41,11 +37,16 @@ public class GetCustomInfoCtrl extends HttpServlet {
 			ResultSet rs = null;
 			pstmt.setString(1, cusId);
 			rs = pstmt.executeQuery();
-			
+			String cusPw = "";
+			String key = "%02x";
+			String compPw = "";
 			Custom vo = new Custom();
+			
 			if(rs.next()){
 				vo.setCusId(rs.getString("cusid"));
-				vo.setCusPw(rs.getString("cuspw"));
+				cusPw = rs.getString("cuspw");
+				//compPw = AES256.decryptAES256(cusPw, key);
+				vo.setCusPw(cusPw);
 				vo.setCusName(rs.getString("cusname"));
 				vo.setAddress(rs.getString("address"));
 				vo.setTel(rs.getString("tel"));
@@ -58,7 +59,7 @@ public class GetCustomInfoCtrl extends HttpServlet {
 			}
 			request.setAttribute("custom", vo);
 			
-			RequestDispatcher view = request.getRequestDispatcher("./custom/customInfo.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("./admin/customDetail.jsp");
 			view.forward(request, response);
 
 			pstmt.close();

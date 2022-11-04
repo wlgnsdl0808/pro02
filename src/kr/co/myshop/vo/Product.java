@@ -1,7 +1,7 @@
 package kr.co.myshop.vo;
 
 public class Product {
-	private int proNo;
+	private int proNo;	
 	private int cateNo;
 	private String proName;
 	private String proSpec;

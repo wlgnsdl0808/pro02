@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="common.css">
 <style>
 .in_container { clear:both; width:1400px; margin:0 auto; }
 .in_container:after { content:""; display:block; clear:both; }
@@ -24,7 +25,7 @@
 		  <div class="card-body">
 		    <h5 class="card-title">Card title</h5>
 		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		    <a href="#" class="btn btn-primary">Go somewhere</a>
+		    <a href="#" class="btn btn-dark">Go somewhere</a>
 		  </div>
 		</div>
 	</li>
@@ -34,7 +35,7 @@
 		  <div class="card-body">
 		    <h5 class="card-title">Card title</h5>
 		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		    <a href="#" class="btn btn-primary">Go somewhere</a>
+		    <a href="#" class="btn btn-dark">Go somewhere</a>
 		  </div>
 		</div>
 	</li>
@@ -44,7 +45,7 @@
 		  <div class="card-body">
 		    <h5 class="card-title">Card title</h5>
 		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		    <a href="#" class="btn btn-primary">Go somewhere</a>
+		    <a href="#" class="btn btn-dark">Go somewhere</a>
 		  </div>
 		</div>
 	</li>
@@ -54,7 +55,7 @@
 		  <div class="card-body">
 		    <h5 class="card-title">Card title</h5>
 		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		    <a href="#" class="btn btn-primary">Go somewhere</a>
+		    <a href="#" class="btn btn-dark">Go somewhere</a>
 		  </div>
 		</div>
 	</li>
@@ -64,7 +65,7 @@
 		  <div class="card-body">
 		    <h5 class="card-title">Card title</h5>
 		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		    <a href="#" class="btn btn-primary">Go somewhere</a>
+		    <a href="#" class="btn btn-dark">Go somewhere</a>
 		  </div>
 		</div>
 	</li>
@@ -74,7 +75,7 @@
 		  <div class="card-body">
 		    <h5 class="card-title">Card title</h5>
 		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		    <a href="#" class="btn btn-primary">Go somewhere</a>
+		    <a href="#" class="btn btn-dark">Go somewhere</a>
 		  </div>
 		</div>
 	</li>
@@ -84,7 +85,7 @@
 		  <div class="card-body">
 		    <h5 class="card-title">Card title</h5>
 		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		    <a href="#" class="btn btn-primary">Go somewhere</a>
+		    <a href="#" class="btn btn-dark">Go somewhere</a>
 		  </div>
 		</div>
 	</li>
@@ -94,7 +95,7 @@
 		  <div class="card-body">
 		    <h5 class="card-title">Card title</h5>
 		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		    <a href="#" class="btn btn-primary">Go somewhere</a>
+		    <a href="#" class="btn btn-dark">Go somewhere</a>
 		  </div>
 		</div>
 	</li>

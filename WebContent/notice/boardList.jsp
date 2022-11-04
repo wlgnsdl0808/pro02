@@ -40,9 +40,13 @@
 		<% } %>	
 		</tbody>
 	</table>
+	<% if(sid != null){ %>
+		<%if (sid.equals("admin")){ %>
 	<div class="btn-group">
-		<a href="./notice/insertBoard.jsp" class="btn btn-info">글 쓰기</a>
+		<a href="./notice/insertBoard.jsp" class="btn btn-dark">글 쓰기</a>
 	</div>
+		<% } %>
+	<% } %>
 </div>
 
 </body>
