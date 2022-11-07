@@ -18,7 +18,7 @@
 </style>
 </head>
 <body>
-<%@ include file="../header.jsp" %>
+<%@ include file="../header2.jsp" %>
 <div class="container-fluid" id="content">
 <div class="row" id="content_row">
     <%@ include file="admin_sidebar.jsp" %>

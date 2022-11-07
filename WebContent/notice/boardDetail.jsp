@@ -47,11 +47,15 @@
 			</tr>
 		</tbody>
 	</table>
-	<div class="btn-group">
-		<a href="UpdateBoardCtrl?notiNo=<%=vo.getNotiNo() %>" class="btn btn-info">글 수정</a>
-		<a href="DeleteBoardCtrl?notiNo=<%=vo.getNotiNo() %>" class="btn btn-info">글 삭제</a>
-		<a href="GetBoardListCtrl" class="btn btn-info">목록으로</a>
+	<% if(sid != null){ %>
+		<%if (sid.equals("admin")){ %>
+			<div class="btn-group">
+				<a href="UpdateBoardCtrl?notiNo=<%=vo.getNotiNo() %>" class="btn bg-dark text-white">글 수정</a>
+				<a href="DeleteBoardCtrl?notiNo=<%=vo.getNotiNo() %>" class="btn bg-dark text-white">글 삭제</a>
+		<% } %>
+	<% } %>
+			<a href="GetBoardListCtrl" class="btn bg-dark text-white">목록으로</a>
+			</div>
 	</div>
-</div>
 </body>
 </html>

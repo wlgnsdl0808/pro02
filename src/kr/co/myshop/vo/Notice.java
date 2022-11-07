@@ -6,6 +6,7 @@ public class Notice {
 	private String content;
 	private String author;
 	private String resDate;
+	private String visited;
 	
 	public int getNotiNo() {
 		return notiNo;
@@ -36,6 +37,12 @@ public class Notice {
 	}
 	public void setResDate(String resDate) {
 		this.resDate = resDate;
+	}
+	public String getVisited() {
+		return visited;
+	}
+	public void setVisited(String visited) {
+		this.visited = visited;
 	}
 	
 	

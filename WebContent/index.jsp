@@ -13,10 +13,56 @@
 <style>
 .in_container { clear:both; width:1400px; margin:0 auto; }
 .in_container:after { content:""; display:block; clear:both; }
+.bd-example { padding: 24px; width: 1200px; margin:50px auto; }
 </style>
 </head>
 <body>
 <%@ include file="header.jsp" %>
+<div class="bd-example">
+	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  	<ol class="carousel-indicators">
+	    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+	    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+	    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+	    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+	    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+	    <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+	    <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+	    
+	  </ol>
+	  <div class="carousel-inner">
+	    <div class="carousel-item active">
+	      <img src="./img/main1.jpg" class="d-block w-100" alt="메인이미지1">
+	    </div>
+	    <div class="carousel-item">
+	      <img src="./img/main2.jpg" class="d-block w-100" alt="메인이미지2">
+	    </div>
+	    <div class="carousel-item">
+	      <img src="./img/main3.jpg" class="d-block w-100" alt="메인이미지3">
+	    </div>
+	    <div class="carousel-item">
+	      <img src="./img/main4.jpg" class="d-block w-100" alt="메인이미지4">
+	    </div>
+	    <div class="carousel-item">
+	      <img src="./img/main5.jpg" class="d-block w-100" alt="메인이미지5">
+	    </div>
+	    <div class="carousel-item">
+	      <img src="./img/main6.jpg" class="d-block w-100" alt="메인이미지6">
+	    </div>
+	    <div class="carousel-item">
+	      <img src="./img/main7.jpg" class="d-block w-100" alt="메인이미지7">
+	    </div>
+  	</div>
+  <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </button>
+</div>
+</div>
 <div class="container" id="content">
 <ul class="row" id="best">
 	<li class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
