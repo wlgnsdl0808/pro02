@@ -21,41 +21,55 @@
 <%
 	Notice vo = (Notice) request.getAttribute("notice");
 %>
-<div class="content container" id="content">
-	<h2 class="title">공지사항 목록</h2>
-	<table class="table">
-		<tbody>
-			<tr>
-				<th>번호</th>
-				<td><%=vo.getNotiNo() %></td>
-			</tr>
-			<tr>
-				<th>제목</th>
-				<td><%=vo.getTitle() %></td>
-			</tr>
-			<tr>
-				<th>내용</th>
-				<td><%=vo.getContent() %></td>
-			</tr>
-			<tr>
-				<th>작성자</th>
-				<td><%=vo.getAuthor() %></td>
-			</tr>
-			<tr>
-				<th>작성일시</th>
-				<td><%=vo.getResDate() %></td>
-			</tr>
-		</tbody>
-	</table>
-	<% if(sid != null){ %>
-		<%if (sid.equals("admin")){ %>
-			<div class="btn-group">
-				<a href="UpdateBoardCtrl?notiNo=<%=vo.getNotiNo() %>" class="btn bg-dark text-white">글 수정</a>
-				<a href="DeleteBoardCtrl?notiNo=<%=vo.getNotiNo() %>" class="btn bg-dark text-white">글 삭제</a>
+<div class="container-fluid" id="content">
+	<div class="row" id="content_row">
+		<% if(sid!=null && sid.equals("admin")) { %>
+		<%@ include file="../admin/admin_sidebar.jsp" %>
 		<% } %>
-	<% } %>
-			<a href="GetBoardListCtrl" class="btn bg-dark text-white">목록으로</a>
+		<% if(sid!=null && sid.equals("admin")) { %>
+		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+		<% } else { %>
+		<main class="content container">
+		<% } %>
+			<h2 class="title">공지사항 목록</h2>
+			<table class="table">
+				<tbody>
+					<tr>
+						<th>번호</th>
+						<td><%=vo.getNotiNo() %></td>
+					</tr>
+					<tr>
+						<th>제목</th>
+						<td><%=vo.getTitle() %></td>
+					</tr>
+					<tr>
+						<th>내용</th>
+						<td><%=vo.getContent() %></td>
+					</tr>
+					<tr>
+						<th>작성자</th>
+						<td><%=vo.getAuthor() %></td>
+					</tr>
+					<tr>
+						<th>작성일시</th>
+						<td><%=vo.getResDate() %></td>
+					</tr>
+					<tr>
+						<th>읽은 횟수</th>
+						<td><%=vo.getVisited() %></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="btn-group">
+				<% if(sid!=null && sid.equals("admin")) { %>
+				<a href="<%=request.getContextPath() %>/UpdateBoardCtrl?notiNo=<%=vo.getNotiNo() %>" class="btn btn-dark">글 수정</a>
+				<a href="<%=request.getContextPath() %>/DeleteBoardCtrl?notiNo=<%=vo.getNotiNo() %>" class="btn btn-dark">글 삭제</a>
+				<% } %>			
+				<a href="<%=request.getContextPath() %>/GetBoardListCtrl" class="btn btn-dark">목록으로</a>
 			</div>
-	</div>
+		</main>
+	</main>		
+</div>
+<%@ include file="../footer.jsp" %>
 </body>
 </html>

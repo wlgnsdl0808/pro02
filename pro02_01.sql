@@ -35,12 +35,10 @@ create table category(
 	cateName varchar(50)
 );
 
-insert into category(cateName) values ("SUIT");
-insert into category(cateName) values ("OUTER");
-insert into category(cateName) values ("TOP");
-insert into category(cateName) values ("PANTS");
-insert into category(cateName) values ("SHOES");
-insert into category(cateName) values ("BAG");
+insert into category(cateName) values ("SKIN");
+insert into category(cateName) values ("LOTION");
+insert into category(cateName) values ("OIL");
+insert into category(cateName) values ("ESSENCE");
 
 select * from category;
 commit;
@@ -60,6 +58,14 @@ commit;
 
 select * from product;
 
-delete from product;
 
-drop table product;
+create table sales(
+	saleNo int primary key auto_increment, 
+	cusId varchar(12) not null,
+	proNo varchar(50) not null,	
+	amount int not null,	
+	saleDate date default now(),
+	parselNo int ,
+	salePayNo int
+);
+

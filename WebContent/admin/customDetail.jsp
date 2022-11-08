@@ -21,7 +21,7 @@
 </style>
 </head>
 <body>
-<%@ include file="../header2.jsp" %>
+<%@ include file="../header.jsp" %>
 <div class="container-fluid" id="content">
 <div class="row" id="content_row">
 	<%@ include file="admin_sidebar.jsp" %>
@@ -44,7 +44,7 @@
 				        String key = "%02x";
 						cusPw = AES256.decryptAES256(custom.getCusPw(), key); */
 						%>
-							<input type="text" name="cusPw" id="cusPw" placeholder="비밀번호 입력" value="<%=custom.getCusPw() %>" class="form-control" readonly /><button type="button" class="btn btn-primary" onclick="defaultPass()">비밀번호 초기화</button>
+							<input type="text" name="cusPw" id="cusPw" placeholder="비밀번호 입력" value="<%=custom.getCusPw() %>" class="form-control" readonly /><button type="button" class="btn btn-dark" onclick="defaultPass()">비밀번호 초기화</button>
 							<input type="hidden" name="changePw" id="changePw" value="no">
 						</td>
 					</tr>

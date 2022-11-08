@@ -8,7 +8,7 @@
 .nav { color: #fff;}
 </style>
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-  <a class="navbar-brand text-white" id="logo" href="index.jsp">MALRANG FACTORY</a>
+  <a class="navbar-brand text-white" id="logo" href="index.jsp">innisfree</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -26,15 +26,11 @@
 	          Product
 	        </a>
 	        <div class="dropdown-menu">
-	          <a class="dropdown-item" href="GetProductItemListCtrl?cateNo=1">SUIT</a>
-	          <a class="dropdown-item" href="GetProductItemListCtrl?cateNo=2">OUTER</a>
+	          <a class="dropdown-item" href="GetProductItemListCtrl?cateNo=1">SKIN</a>
+	          <a class="dropdown-item" href="GetProductItemListCtrl?cateNo=2">LOTION</a>
 	          <div class="dropdown-divider"></div>
-	          <a class="dropdown-item" href="GetProductItemListCtrl?cateNo=3">TOP</a>
-	          <a class="dropdown-item" href="GetProductItemListCtrl?cateNo=4">PANTS</a>
-	          <div class="dropdown-divider"></div>
-	          <a class="dropdown-item" href="GetProductItemListCtrl?cateNo=5">SHOES</a>
-	          <a class="dropdown-item" href="GetProductItemListCtrl?cateNo=6">BAG</a>
-	        </div>
+	          <a class="dropdown-item" href="GetProductItemListCtrl?cateNo=3">OIL</a>
+	          <a class="dropdown-item" href="GetProductItemListCtrl?cateNo=4">ESSENCE</a>
 	      </li>
 	      <li class="nav-item dropdown">
 	        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-expanded="true">

@@ -40,7 +40,7 @@
 			    <h5 class="card-title"><%=pro.getProName() %></h5>
 			    <p class="card-text"><%=pro.getProSpec() %></p>
 			    <p class="card-text"><strong style="color:red;"><%=pro.getOriPrice() %>원</strong></p>
-			    <a href="<%=request.getContextPath() %>/GetProductDetailCtrl?proNo=<%=pro.getProNo() %>" class="btn btn-primary">제품 상세보기</a>
+			    <a href="<%=request.getContextPath() %>/GetProductDetailCtrl?proNo=<%=pro.getProNo() %>" class="btn btn-dark">제품 상세보기</a>
 			  </div>
 			</div>
 		</li>
@@ -53,10 +53,12 @@
 		</li>
 	<% } %>
 	</ul>
-	<% if(sid.equals("admin")) { %>
-	<div class="btn-group">
-		<a href="<%=request.getContextPath() %>/InsertProductCategoryCtrl" class="btn btn-danger">상품 등록</a>
-	</div>
+	<% if(sid != null){%>
+		<% if(sid.equals("admin")) { %>
+		<div class="btn-group">
+			<a href="<%=request.getContextPath() %>/InsertProductCategoryCtrl" class="btn btn-dark">상품 등록</a>
+		</div>
+		<% } %>
 	<% } %>
 </div>
 <%@ include file="../footer.jsp" %>

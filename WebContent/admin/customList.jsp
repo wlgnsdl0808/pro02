@@ -21,7 +21,7 @@
 <%
 	List<Custom> cusList = (ArrayList<Custom>) request.getAttribute("cusList");
 %>
-<%@ include file="../header2.jsp" %>
+<%@ include file="../header.jsp" %>
 <div class="container-fluid" id="content">
 <div class="row" id="content_row">
     <%@ include file="admin_sidebar.jsp" %>

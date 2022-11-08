@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*, java.util.*, kr.co.myshop.vo.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,11 +14,13 @@
 <style>
 .in_container { clear:both; width:1400px; margin:0 auto; }
 .in_container:after { content:""; display:block; clear:both; }
-.bd-example { padding: 24px; width: 1200px; margin:50px auto; }
 </style>
 </head>
 <body>
 <%@ include file="header.jsp" %>
+<%
+	List<Product> proList = (ArrayList<Product>) request.getAttribute("proList");
+%>
 <div class="bd-example">
 	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   	<ol class="carousel-indicators">
@@ -67,7 +70,17 @@
 <ul class="row" id="best">
 	<li class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
 		<div class="card" style="width: 18rem;">
-		  <img src="./img/dummy.svg" class="card-img-top" alt="더미이미지">
+		  <img src="./img/skin/skin1.jpg" class="card-img-top" alt="더미이미지">
+		  <div class="card-body">
+		    <h5 class="card-title">화산송이 모공 토너 2X 200mL</h5>
+		    <p class="card-text">16,000</p>
+		    <a href="#" class="btn btn-dark">제품 상세보기</a>
+		  </div>
+		</div>
+	</li>
+	<li class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+		<div class="card" style="width: 18rem;">
+		  <img src="./img/skin/skin2.jpg" class="card-img-top" alt="더미이미지">
 		  <div class="card-body">
 		    <h5 class="card-title">Card title</h5>
 		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -77,7 +90,7 @@
 	</li>
 	<li class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
 		<div class="card" style="width: 18rem;">
-		  <img src="./img/dummy.svg" class="card-img-top" alt="더미이미지">
+		  <img src="./img/skin/skin3.jpg" class="card-img-top" alt="더미이미지">
 		  <div class="card-body">
 		    <h5 class="card-title">Card title</h5>
 		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -87,7 +100,7 @@
 	</li>
 	<li class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
 		<div class="card" style="width: 18rem;">
-		  <img src="./img/dummy.svg" class="card-img-top" alt="더미이미지">
+		  <img src="./img/skin/skin4.jpg" class="card-img-top" alt="더미이미지">
 		  <div class="card-body">
 		    <h5 class="card-title">Card title</h5>
 		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -97,7 +110,7 @@
 	</li>
 	<li class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
 		<div class="card" style="width: 18rem;">
-		  <img src="./img/dummy.svg" class="card-img-top" alt="더미이미지">
+		  <img src="./img/skin/skin5.jpg" class="card-img-top" alt="더미이미지">
 		  <div class="card-body">
 		    <h5 class="card-title">Card title</h5>
 		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -107,7 +120,7 @@
 	</li>
 	<li class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
 		<div class="card" style="width: 18rem;">
-		  <img src="./img/dummy.svg" class="card-img-top" alt="더미이미지">
+		  <img src="./img/skin/skin6.jpg" class="card-img-top" alt="더미이미지">
 		  <div class="card-body">
 		    <h5 class="card-title">Card title</h5>
 		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -117,7 +130,7 @@
 	</li>
 	<li class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
 		<div class="card" style="width: 18rem;">
-		  <img src="./img/dummy.svg" class="card-img-top" alt="더미이미지">
+		  <img src="./img/skin/skin7.jpg" class="card-img-top" alt="더미이미지">
 		  <div class="card-body">
 		    <h5 class="card-title">Card title</h5>
 		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -127,17 +140,7 @@
 	</li>
 	<li class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
 		<div class="card" style="width: 18rem;">
-		  <img src="./img/dummy.svg" class="card-img-top" alt="더미이미지">
-		  <div class="card-body">
-		    <h5 class="card-title">Card title</h5>
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		    <a href="#" class="btn btn-dark">Go somewhere</a>
-		  </div>
-		</div>
-	</li>
-	<li class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-		<div class="card" style="width: 18rem;">
-		  <img src="./img/dummy.svg" class="card-img-top" alt="더미이미지">
+		  <img src="./img/skin/skin8.jpg" class="card-img-top" alt="더미이미지">
 		  <div class="card-body">
 		    <h5 class="card-title">Card title</h5>
 		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
