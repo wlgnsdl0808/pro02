@@ -1,10 +1,10 @@
 package kr.co.myshop.ctrl;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/ProductWearingCtrl")
-public class ProductWearingCtrl extends HttpServlet {
+import com.crypto.util.SHA256;
+
+@WebServlet("/UpdateParselProCtrl")
+public class UpdateParselProCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private final static String DRIVER = "com.mysql.cj.jdbc.Driver";
 	private final static String URL = "jdbc:mysql://localhost:3306/myshop?serverTimezone=Asia/Seoul";
@@ -21,45 +23,40 @@ public class ProductWearingCtrl extends HttpServlet {
 	private final static String PASS = "a1234";
 	String sql = "";
 	int cnt = 0;
-	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		int proNo = Integer.parseInt(request.getParameter("proNo"));
-		int amount = Integer.parseInt(request.getParameter("amount"));
-		ResultSet rs = null;
+		
+		int parselNo = Integer.parseInt(request.getParameter("parselNo"));
+		String parselCompany = request.getParameter("parselCompany");
+		String baleCode = request.getParameter("baleCode");
+		String parselTel = request.getParameter("parselTel");
+		int parselState = Integer.parseInt(request.getParameter("parselState"));
+
 		try {
 			//데이터베이스 연결
 			Class.forName(DRIVER);
-			sql = "select * from wearing where prono=?";
+			sql = "update parsel set parselcompany=?, balecode=?, parseltel=?, parselstate=? where parselno=?";
 			Connection con = DriverManager.getConnection(URL, USER, PASS);
-			
-			con.setAutoCommit(false);
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, proNo);
-			rs = pstmt.executeQuery();
+			pstmt.setString(1, parselCompany);
+			pstmt.setString(2, baleCode);
+			pstmt.setString(3, parselTel);
+			pstmt.setInt(4, parselState);
+			pstmt.setInt(5, parselNo);
+			cnt = pstmt.executeUpdate();
 			
-			if(rs.next()){
-				sql = "update wearing set amount=amount+? where prono=?";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, amount);
-				pstmt.setInt(2, proNo);
-				pstmt.executeUpdate();
+			if(cnt>=1){
+				response.sendRedirect(request.getContextPath()+"/admin/index.jsp");
 			} else {
-				sql = "insert into wearing(prono, amount) values (?, ?)";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, proNo);
-				pstmt.setInt(2, amount);
-				pstmt.executeUpdate();
+				response.sendRedirect(request.getContextPath()+"/UpdateParselCtrl?parselNo="+parselNo);
 			}
-			response.sendRedirect("GetProductDetailCtrl?proNo="+proNo);
-			con.commit();
-			con.setAutoCommit(true);
+
 			pstmt.close();
 			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}	
+		}
 	}
 }

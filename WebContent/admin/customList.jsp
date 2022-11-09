@@ -22,10 +22,10 @@
 	List<Custom> cusList = (ArrayList<Custom>) request.getAttribute("cusList");
 %>
 <%@ include file="../header.jsp" %>
-<div class="container-fluid" id="content">
 <div class="row" id="content_row">
     <%@ include file="admin_sidebar.jsp" %>
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+<div class="container-fluid" id="content">
 		<h2 class="title">공지사항 목록</h2>
 		<table class="table">
 			<thead>
@@ -59,8 +59,8 @@
 			<% } %>	
 			</tbody>
 		</table>
-    </main>
-  </div>
+		</div>
+	</main>
 </div>
 <%@ include file="../footer.jsp" %>
 </body>

@@ -20,8 +20,7 @@
 <%
 	List<Sales> saleList = (ArrayList<Sales>) request.getAttribute("saleList");
 %>
-<div class="container-fluid" id="content">
-	<div class="row" id="content_row">
+<div class="row" id="content_row">
 		<% if(sid!=null && sid.equals("admin")) { %>
 		<%@ include file="../admin/admin_sidebar.jsp" %>
 		<% } %>
@@ -30,6 +29,7 @@
 		<% } else { %>
 		<main class="content container">
 		<% } %>
+<div class="container-fluid" id="content">
 			<h2 class="title">판매 목록</h2>
 			<table class="table">
 				<thead>
@@ -60,8 +60,9 @@
 				<% } %>	
 				</tbody>
 			</table>
+			</div>
 		</main>
-</div>
+	</main>
 </div>
 <%@ include file="../footer.jsp" %>
 </body>

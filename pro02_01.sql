@@ -20,16 +20,6 @@ create table notice(
 	resDate datetime default now()
 );
 
-create table sales(
-	saleNo int primary key auto_increment, 
-	cusId varchar(12) not null,
-	proNo varchar(50) not null,	
-	amount int not null,	
-	saleDate date default now(),
-	parselNo int ,	
-	salePayNo int
-);
-
 create table category(
 	cateNo int primary key auto_increment,
 	cateName varchar(50)
@@ -56,16 +46,42 @@ create table product(
 
 commit;
 
+alter table product add column amount int default 0;
+
 select * from product;
 
 
 create table sales(
-	saleNo int primary key auto_increment, 
-	cusId varchar(12) not null,
-	proNo varchar(50) not null,	
-	amount int not null,	
-	saleDate date default now(),
-	parselNo int ,
-	salePayNo int
+	saleNo int primary key auto_increment,
+    cusId varchar(13) not null,
+    proNo int not null,
+    amount int not null,
+    saleDate datetime default now(),
+    parselNo int,
+    salePayNo int
 );
 
+create table payment(
+	salePayNo int primary key auto_increment,
+    payMethod varchar(20),
+    payCom varchar(50),
+    cardNum varchar(40),
+    payAmount int
+);
+
+create table parsel(
+	parselNo int primary key auto_increment,
+    parselAddr varchar(500),
+    cusTel varchar(14),
+    parselCompany varchar(50),
+    parselTel varchar(14),
+    parselState int default 0
+);    
+alter table parsel add column baleCode varchar(24); 
+
+select * from parsel;
+
+create table wearing(
+	proNo int primary key,
+    amount int
+);

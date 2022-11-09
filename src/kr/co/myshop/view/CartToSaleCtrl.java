@@ -13,10 +13,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.co.myshop.vo.Sales;
+import kr.co.myshop.vo.Product;
 
-@WebServlet("/GetSalesDetailCtrl")
-public class GetSalesDetailCtrl extends HttpServlet {
+@WebServlet("/CartToSaleCtrl")
+public class CartToSaleCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private final static String DRIVER = "com.mysql.cj.jdbc.Driver";
 	private final static String URL = "jdbc:mysql://localhost:3306/myshop?serverTimezone=Asia/Seoul";
@@ -25,35 +25,40 @@ public class GetSalesDetailCtrl extends HttpServlet {
 	String sql = "";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int saleNo = Integer.parseInt(request.getParameter("saleNo"));
+		int proNo = Integer.parseInt(request.getParameter("proNo"));
+		int cartNo = Integer.parseInt(request.getParameter("cartNo"));
 		try {
 			//데이터베이스 연결
-			Class.forName(DRIVER);
-			sql = "select a.saleno, a.cusid, a.prono, a.amount, a.saledate, a.parselno, a.salepayno, b.parselstate, b.parselcompany from sales a inner join parsel b on a.parselno=b.parselno where a.saleno=?";
+			Class.forName(DRIVER);		
 			Connection con = DriverManager.getConnection(URL, USER, PASS);
-			
-			con.setAutoCommit(false);	//트랜잭션 처리시에는 같이 처리될 수 있도록 오토커밋을 꺼야함
+			sql = "select a.prono, a.cateno, a.proname, a.prospec, a.oriprice, ";			
+			sql = sql + "a.discountrate, a.propic, a.propic2, b.amount from ";
+			sql = sql + "product a right join wearing b on a.prono=b.prono ";
+			sql = sql + "where a.prono in (select b.prono from wearing) and ";
+			sql = sql + "a.prono=?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, saleNo);
+			pstmt.setInt(1, proNo);
 			ResultSet rs = pstmt.executeQuery();
 			
 			//결과를 데이터베이스로 부터 받아서 VO에 저장
-			Sales vo = new Sales();
+			Product vo = new Product();
 			if(rs.next()){
-				vo.setSaleNo(rs.getInt("saleno"));
-				vo.setCusId(rs.getString("cusId"));
-				vo.setProNo(rs.getString("prono"));
+				vo.setProNo(rs.getInt("prono"));
+				vo.setCateNo(rs.getInt("cateno"));
+				vo.setProName(rs.getString("proname"));
+				vo.setProSpec(rs.getString("prospec"));
+				vo.setOriPrice(rs.getInt("oriprice"));
+				vo.setDiscountRate(rs.getDouble("discountrate"));
+				vo.setProPic(rs.getString("propic"));
+				vo.setProPic2(rs.getString("propic2"));
 				vo.setAmount(rs.getInt("amount"));
-				vo.setSaleDate(rs.getString("saledate"));
-				vo.setParselNo(rs.getInt("parselno"));
-				vo.setSalePayNo(rs.getInt("salepayno"));
-				vo.setParselState(rs.getInt("parselstate"));
-				vo.setParselCompany(rs.getString("parselcompany"));
 			}
-			request.setAttribute("sales", vo);
 			
-			//notice/boardList.jsp 에 포워딩
-			RequestDispatcher view = request.getRequestDispatcher("./sales/salesDetail.jsp");
+			request.setAttribute("pro", vo);
+			request.setAttribute("cartNo", cartNo);
+			
+			//product/productDetail.jsp 에 포워딩
+			RequestDispatcher view = request.getRequestDispatcher("./cart/cartToSale.jsp");
 			view.forward(request, response);
 			
 			rs.close();

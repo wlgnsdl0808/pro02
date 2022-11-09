@@ -4,9 +4,10 @@
 <div class="in_container">
 	<div class="row">
 		<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-			<h6>말랑팩토리</h6>
-			<p>COPYRIGHT © 말랑팩토리 ALL RIGHTS RESERVED.</p>
-			<p>TEL070-8844-1552<br>
+			<h6>innisfree</h6>
+			<p>(주)이니스프리 서울특별시 용산구 한강대로 100(한강로2가) 7층 이니스프리 <br>
+			대표이사 최민정</p>
+			<p>TEL 070-8844-1552<br>
 			평일 오전 11:00 ~ 오후 5:00 / 점심시간 오후 1:00 ~ 오후 2:00<br>토 / 일 / 공휴일 휴무<br>
 			<p>COMPANY니찌니찌OWNER강혜진<br>
 			ADDRESS39376 경상북도 구미시 1공단로 212 (공단동) 한라시그마밸리 418호<br>

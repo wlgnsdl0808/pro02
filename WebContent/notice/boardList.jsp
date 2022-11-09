@@ -20,6 +20,15 @@
 <%
 	List<Notice> notiList = (ArrayList<Notice>) request.getAttribute("notiList");
 %>
+<div class="row" id="content_row">
+		<% if(sid!=null && sid.equals("admin")) { %>
+		<%@ include file="../admin/admin_sidebar.jsp" %>
+		<% } %>
+		<% if(sid!=null && sid.equals("admin")) { %>
+		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+		<% } else { %>
+		<main class="content container">
+		<% } %>
 <div class="content container" id="content">
 	<h2 class="title">공지사항 목록</h2>
 	<table class="table">
@@ -37,16 +46,19 @@
 			<td><a href="GetBoardDetailCtrl?notiNo=<%=vo.getNotiNo() %>"><%=vo.getTitle() %></a></td>
 			<td><%=vo.getResDate() %></td>
 		</tr>
-		<% } %>	
+			<% } %>	
 		</tbody>
-	</table>
-	<% if(sid != null){ %>
-		<%if (sid.equals("admin")){ %>
-	<div class="btn-group">
-		<a href="./notice/insertBoard.jsp" class="btn btn-dark">글 쓰기</a>
-	</div>
+		</table>
+		<% if(sid != null){ %>
+			<%if (sid.equals("admin")){ %>
+		<div class="btn-group">
+			<a href="./notice/insertBoard.jsp" class="btn btn-dark">글 쓰기</a>
+		</div>
 		<% } %>
-	<% } %>
+		<% } %>
+		</div>
+	</main>
+	</main>
 </div>
 <%@ include file="../footer.jsp" %>
 </body>

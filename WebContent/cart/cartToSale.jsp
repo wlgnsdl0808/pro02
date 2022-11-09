@@ -22,6 +22,7 @@
 <%@ include file="../header.jsp" %>
 <%
 	Product vo = (Product) request.getAttribute("pro");
+	int cartNo = (int) (request.getAttribute("cartNo"));
 %>
 <div class="container-fluid" id="content">
 	<div class="row" id="content_row">
@@ -34,10 +35,11 @@
 		<main class="content container">
 		<% } %>
 			<h2 class="title">제품 구매하기</h2>
-			<form name="frm1" id="frm1" action="<%=request.getContextPath() %>/InsertSaleCtrl" method="post" onsubmit="return payCheck(this)">
+			<form name="frm1" id="frm1" action="<%=request.getContextPath() %>/CartToInsertSaleCtrl" method="post" onsubmit="return payCheck(this)">
 				<h3>제품 정보</h3>
 				<input type="hidden" name="cusId" id="cusId" value="<%=sid %>" />
 				<input type="hidden" name="proNo" id="proNo" value="<%=vo.getProNo() %>" />		
+				<input type="hidden" name="cartNo" id="cartNo" value="<%=cartNo %>" />
 				<table class="table">
 					<tbody>
 						<tr>
@@ -273,12 +275,12 @@
 			}
 			</script>
 			<div class="btn-group">
-				<% if(sid.equals("admin")) { %>
-				<a href="<%=request.getContextPath() %>/GetProductWearingCtrl?proNo=<%=vo.getProNo() %>" class="btn btn-dark">제품 입고</a>
-				<a href="<%=request.getContextPath() %>/UpdateProductCtrl?proNo=<%=vo.getProNo() %>" class="btn btn-dark">제품 정보 수정</a>
-				<a href="<%=request.getContextPath() %>/DeleteProductCtrl?proNo=<%=vo.getProNo() %>" class="btn btn-dark">제품 삭제</a>
-				<% } %>
 				<a href="<%=request.getContextPath() %>/GetProductListCtrl" class="btn btn-dark">목록으로</a>
+				<% if(sid.equals("admin")) { %>
+				<a href="<%=request.getContextPath() %>/DeleteProductCtrl?proNo=<%=vo.getProNo() %>" class="btn btn-dark">제품 삭제</a>
+				<a href="<%=request.getContextPath() %>/UpdateProductCtrl?proNo=<%=vo.getProNo() %>" class="btn btn-dark">제품 정보 수정</a>
+				<a href="<%=request.getContextPath() %>/GetProductWearingCtrl?proNo=<%=vo.getProNo() %>" class="btn btn-dark">제품 입고</a>
+				<% } %>
 			</div>
 		</main>
 	</div>

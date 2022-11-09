@@ -17,6 +17,7 @@
 <style>
 .in_container { clear:both; width:1400px; margin:0 auto; }
 .in_container:after { content:""; display:block; clear:both; }
+.card { margin-bottom: 20px; }
 .card-title { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .card-text {   overflow: hidden;  text-overflow: ellipsis;  display: -webkit-box;
   -webkit-line-clamp: 2;  -webkit-box-orient: vertical; }
@@ -27,6 +28,15 @@
 <%
 	List<Product> proList = (ArrayList<Product>) request.getAttribute("proList");
 %>
+<div class="row" id="content_row">
+		<% if(sid!=null && sid.equals("admin")) { %>
+		<%@ include file="../admin/admin_sidebar.jsp" %>
+		<% } %>
+		<% if(sid!=null && sid.equals("admin")) { %>
+		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+		<% } else { %>
+		<main class="content container">
+		<% } %>
 <div class="content container" id="content">
 	<h2 class="title">제품 목록</h2>
 	<ul class="row" id="best">
@@ -34,7 +44,7 @@
 		Product pro = proList.get(i);
 	%>
 		<li class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-			<div class="card" style="width: 18rem;">
+			<div class="card" style="width: 275px;">
 			  <img src="<%=request.getContextPath() %>/upload/<%=pro.getProPic() %>" class="card-img-top" alt="<%=pro.getProName() %>">
 			  <div class="card-body">
 			    <h5 class="card-title"><%=pro.getProName() %></h5>
@@ -60,6 +70,9 @@
 		</div>
 		<% } %>
 	<% } %>
+</div>
+</main>
+</main>
 </div>
 <%@ include file="../footer.jsp" %>
 </body>

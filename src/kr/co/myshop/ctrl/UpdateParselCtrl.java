@@ -6,60 +6,57 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/ProductWearingCtrl")
-public class ProductWearingCtrl extends HttpServlet {
+import kr.co.myshop.vo.Parsel;
+
+@WebServlet("/UpdateParselCtrl")
+public class UpdateParselCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private final static String DRIVER = "com.mysql.cj.jdbc.Driver";
 	private final static String URL = "jdbc:mysql://localhost:3306/myshop?serverTimezone=Asia/Seoul";
 	private final static String USER = "root";
 	private final static String PASS = "a1234";
 	String sql = "";
-	int cnt = 0;
-	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
-		int proNo = Integer.parseInt(request.getParameter("proNo"));
-		int amount = Integer.parseInt(request.getParameter("amount"));
-		ResultSet rs = null;
+		int parselNo = Integer.parseInt(request.getParameter("parselNo"));
 		try {
 			//데이터베이스 연결
 			Class.forName(DRIVER);
-			sql = "select * from wearing where prono=?";
+			sql = "select * from parsel where parselno=?";
 			Connection con = DriverManager.getConnection(URL, USER, PASS);
-			
-			con.setAutoCommit(false);
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, proNo);
-			rs = pstmt.executeQuery();
+			pstmt.setInt(1, parselNo);
+			ResultSet rs = pstmt.executeQuery();
 			
+			//결과를 데이터베이스로 부터 받아서 VO에 저장
+			Parsel vo = new Parsel();
 			if(rs.next()){
-				sql = "update wearing set amount=amount+? where prono=?";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, amount);
-				pstmt.setInt(2, proNo);
-				pstmt.executeUpdate();
-			} else {
-				sql = "insert into wearing(prono, amount) values (?, ?)";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, proNo);
-				pstmt.setInt(2, amount);
-				pstmt.executeUpdate();
+				vo.setParselNo(rs.getInt("parselno"));
+				vo.setParselAddr(rs.getString("parseladdr"));
+				vo.setCusTel(rs.getString("custel"));
+				vo.setParselCompany(rs.getString("parselcompany"));
+				vo.setParselTel(rs.getString("parseltel"));
+				vo.setParselState(rs.getInt("parselstate"));
+				vo.setBaleCode(rs.getString("balecode"));
 			}
-			response.sendRedirect("GetProductDetailCtrl?proNo="+proNo);
-			con.commit();
-			con.setAutoCommit(true);
+			request.setAttribute("parsel", vo);
+			
+			//sales/updateParsel.jsp 에 포워딩
+			RequestDispatcher view = request.getRequestDispatcher("./parsel/updateParsel.jsp");
+			view.forward(request, response);
+			
+			rs.close();
 			pstmt.close();
 			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	
 	}
+
 }
